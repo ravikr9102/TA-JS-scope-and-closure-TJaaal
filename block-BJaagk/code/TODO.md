@@ -68,16 +68,28 @@ function add(a, b) {
 }
 
 let five = add(2, 3); // Valid
-five = add; // Answer
-five = five(10, 11); // Answer
+five = add; // Valid 
+five = five(10, 11); // Valid 
 five = function () {
   return "Hello";
-}; // Answer
+}; // Valid
 ```
 
 6. What is the difference between function definition and function call? Explain with an example.
 
+Using a function to do a particular task any point in program is called as function call. So the difference between the function and function call is, A function is procedure to achieve a particular result while function call is using this function to achive that task.
+
+function add(){ // Defination
+
+}
+
+add(); // Call
+
+
 7. What is the similarities between function definition and function call?
+
+// Function Defination is an expression (function is an object)
+// Function Call is an expression (function call always return a value)
 
 8. Is the code below valid or invalid. Explain with reason.
 
@@ -91,4 +103,17 @@ hello.user = "Sam"; // valid
 
 9. What is higher order function explain with an example.
 
+// That accepts a function defination
+// that returns a function defination
+
+function add(cb){ // HOF
+  cb()
+}
+function add(){ // HOF
+  function main(){}
+  return main
+}
+
 10. Explain what is callback function. Why you can pass a function inside a function?
+
+// Because function is an expression in JS we can pass a function inside another function
