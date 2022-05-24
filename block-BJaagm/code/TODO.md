@@ -48,7 +48,7 @@ var userMsg = sayHello(user); // "Hello Arya"
 
 <!-- Put your image here -->
 
-![](./img/image-name.jpg)
+![](./IMG20220524145127.jpg)
 
 
 
@@ -67,7 +67,7 @@ var percentageProfit = getPercentage(400, 200); // 200
 
 <!-- Put your image here -->
 
-![](./img/image-name.jpg)
+![](./IMG20220524150114.jpg)
 
 
 
