@@ -5,10 +5,16 @@
 - It should work exactly like array `forEach` method
 
 ```js
+// function forEach(arr, cb) {
+//   for(let i = 0; i < arr.length; i++){
+//     cb(arr[i], i, arr)
+//   }
+// }
+
 function forEach(arr, cb) {
-  for(let i = 0; i < arr.length; i++){
-    cb(arr[i], i, arr)
-  }
+ arr.reduce((acc,cv,index,arr) => {
+   cb(cv,index,arr);
+ })
 }
 
 forEach(['Sam', 'Jon', 'Arya'], (name, i, arr) =>
@@ -23,12 +29,19 @@ forEach(['Sam', 'Jon', 'Arya'], (name, i, arr) =>
 - It should work exactly like array `map` method
 
 ```js
-function map(arr, cb) {
-  let final = [];
-  for(let i = 0; i < arr.length; i++){
-    final.push(cb(arr[i]))
-  }
-  return final;
+// function map(arr, cb) {
+//   let final = [];
+//   for(let i = 0; i < arr.length; i++){
+//     final.push(cb(arr[i]))
+//   }
+//   return final;
+// }
+
+function map(arr,cb){
+  return arr.reduce((acc,cv,i,arr) =>{
+    acc.push(cb(cv,i,arr));
+    return acc;
+  }, [])
 }
 
 map(['Sam', 'Jon', 'Arya'], (name) => name + name); // ['SamSam', 'JonJon', 'AryaArya']
@@ -41,15 +54,25 @@ map(['Sam', 'Jon', 'Arya'], (name) => name + name); // ['SamSam', 'JonJon', 'Ary
 - It should work exactly like array `filter` method
 
 ```js
-function filter(arr, cb) {
-  let final = [];
-  for(let i = 0; i < arr.length; i++ ){
-    if(cb(arr[i])){
-      final.push(arr[i])
+// function filter(arr, cb) {
+//   let final = [];
+//   for(let i = 0; i < arr.length; i++ ){
+//     if(cb(arr[i])){
+//       final.push(arr[i])
+//     }
+//   }
+//   return final;
+// }
+
+function filter(arr,cb){
+  return arr.reduce((acc, cv, i, arr) =>{
+    if(cb(cv,i,arr)){
+      acc.push(cv);
     }
-  }
-  return final;
+    return acc;
+  },[])
 }
+
 filter(['Sam', 'Jon', 'Arya'], (name) =>
   name.startsWith('S')
 ); // ['Sam']
