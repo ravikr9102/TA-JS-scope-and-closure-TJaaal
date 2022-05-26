@@ -1,13 +1,19 @@
 1. Create a function by your choice that accepts a callback function.
 
-function(cb){
+function outer(cb){
+  return cb(21);
 }
+
+outer(function inner(num){return num + 1});
 
 2. Create a function by you choice that returns a function reference.
 
-function(cb){
-  return cb
+function outer(){
+  function inner(num){return num + 1}
+  return inner;
 }
+
+outer();
 
 3. Create a higher order function called `map` that takes two inputs:
    - An array of numbers/string/boolean etc
@@ -38,6 +44,7 @@ multiplyByTwo(2); //-> 4
 ```js
 function forEach (arr, cb){
   for(let i = 0; i < arr.length; i++){
+    cb(arr[i])
   }
 }
 
