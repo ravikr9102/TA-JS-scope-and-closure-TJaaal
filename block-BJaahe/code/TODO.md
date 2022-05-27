@@ -77,14 +77,12 @@ When `forEach` function is called it returns another function. When the returned
 ```js
 function forEach(arr) {
   let index = 0;
-  return {
-    function(){
+  return function(){
       return arr[index++]
-    }
   }
 }
 
-let next = [1, 2, 3, 4, 5];
+let next = forEach([1, 2, 3, 4, 5]);
 next(); // 1
 next(); // 2
 next(); // 3
@@ -153,11 +151,11 @@ function nameFactory(firstName,lastName){
     },
     setFirstName: function(first){
       firstName = first;
-      return `${first} ${lastName}`
+      return `${firstName} ${lastName}`
     },
     setLastName: function(last){
       lastName = last;
-      return `${last} ${FirstName}`
+      return `${FirstName} ${lastName}`
     }
   }
 }
@@ -178,6 +176,14 @@ function createTag(tag) {
     return `<${tag}>${str}<${tag}/>`
   }
 }
+
+// function createTag(tag){
+//   return function(child){
+//     let elm = document.createElement(tag);
+//     elm.innerText = child;
+//     return elm;
+//   }
+// }
 
 let bold = createTag('b');
 bold('Hello World!'); // <b>Hello World!</b>
